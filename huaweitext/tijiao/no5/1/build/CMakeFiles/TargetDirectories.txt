@@ -1,0 +1,3 @@
+/home/zhangfeifei/huaweitext/realnew/3/SDK/build/CMakeFiles/edit_cache.dir
+/home/zhangfeifei/huaweitext/realnew/3/SDK/build/CMakeFiles/rebuild_cache.dir
+/home/zhangfeifei/huaweitext/realnew/3/SDK/build/CMakeFiles/cdn.dir

@@ -1,0 +1,103 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct D //日期类型的结构体
+{   
+	int year;
+	int month;
+	int day;
+} Date;//将新定义的结构体命名为Date
+/*编程中使用typedef目的一般有两个，一个是给变量一个易记且意义明确的新名字，另一个是简化一些比较复杂的类型声明。
+1、typedef的最简单使用?typedef?long?byte_4;??
+给已知数据类型long起个新名字，叫byte_4。?
+2、?typedef与结构体结合使用
+?typedef?struct?tagMyStruct?{???int?iNum;??long?lLength;?}?
+MyStruct;??
+这语句实际上完成两个操作：?
+1)?定义一个新的结构类型
+2)?typedef为这个新的结构起了一个名字，叫MyStruct。
+
+
+ */
+ int IsLeapYear(int year)    //判断是否是闰年
+ { 
+	 return (year % 400 ==0 || year % 4 == 0 && year % 100 != 0);
+ }   //闰年的判断条件
+ int GetMaxDay(int year,int month)    //获得某年的最大天数
+ {
+	 switch(month)   
+	{
+		case 1:
+		case 3:
+		case 5:
+		case 7:
+		case 8:
+		case 10:  //只会执行相应month的case语句，这里为空，直接返回31
+		case 12:
+		return 31;
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+		return 30;
+		case 2:
+		return IsLeapYear(year)?29:28;  //如果是2月，判断有多少天
+		default:   //如果没有哪一分支能执行case语句，则执行default语句
+		return -1;  //返回个-1，经常用于错误返回
+
+	}
+ }
+int IsEqual(Date date1,Date date2) //两个日期是否相等
+{  
+	 if(date1.year == date2.year && date1.month == date2.month && date1.day == date2.day)//注意这种引用方式
+	 return 1;
+	 return 0;
+}
+int GetdiffDays(Date date1,Date date2)//判断两个日期的差值
+{	
+	int X=0;
+
+	while(!IsEqual(date1,date2))//循环条件为两个日期不是同一天
+	{
+		if(date1.day!=GetMaxDay(date1.year,date1.month))//如果这个月的天数不等于该月的最大天数
+		{
+
+			date1.day++;//一直加到最大天数，执行完这个循环体，则执行X++,之后跳回while语句
+
+		}
+		else
+		{ 
+			if(date1.month !=12)//如果月数不为12月
+				{ 
+					date1.month++;//月份+1 
+					date1.day = 1;
+				}
+			else
+				{ 
+					date1.day=date1.month=1;
+					date1.year++;
+				}
+		}
+		X++;
+	//梳理：如果日期不相等，则判断日期距离这个月的最大天数有多少天，每判断一次X+1,并且date1.year+1.直到日期最大，则符合日期最大的条件，执行else语句，同理月份不等于12月时，月份+1，同时将日期置1，即为新一轮计算下一个月的循环，同样每执行一次x+1,最后算出的是总天数差值。
+	}
+	return X;
+}
+int main()
+{ 
+	Date date1,date2;//定义两个日期类变量
+	int X=0;
+	date1.year=1992;  //对date1中year这个成员进行初始化
+	date1.month=1;
+	date1.day=1;
+	printf("请输入日期：");
+	scanf("%d%d%d",&date2.year,&date2.month,&date2.day);//输入一个日期与1992/1/1进行对比
+	X=GetdiffDays(date1,date2);//获取两个日期之间相差的天数
+	printf("日期差为：%d天\n",X);//输出相差的天数
+	X=X%5; //天数对5取余//主函数中出现的X完全可以更换，跟子函数中的X不一样
+	if(X==0||X==1)//余数为0或4，则为晒网
+		printf("晒网！\n");
+	else
+		printf("打鱼！\n");
+	system("pause");
+	return 0;
+}//即为从1992年1月1日后，把天数5天5天的分组，最后两天即为晒网

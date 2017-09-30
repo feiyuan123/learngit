@@ -1,0 +1,17 @@
+正在读取软件包列表... 完成
+正在分析软件包的依赖关系树       
+正在读取状态信息... 完成       
+下列软件包是自动安装的并且现在不需要了：
+  libsnapd-glib1 snapd-login-service
+使用'sudo apt autoremove'来卸载它(它们)。
+将会同时安装下列软件：
+  emacs24 emacs24-bin-common emacs24-common emacs24-common-non-dfsg emacs24-el
+  libgif7 liblockfile-bin liblockfile1 libm17n-0 libotf0 m17n-db
+建议安装：
+  ncurses-term m17n-docs gawk
+下列【新】软件包将被安装：
+  emacs emacs24 emacs24-bin-common emacs24-common emacs24-common-non-dfsg
+  emacs24-el libgif7 liblockfile-bin liblockfile1 libm17n-0 libotf0 m17n-db
+升级了 0 个软件包，新安装了 12 个软件包，要卸载 0 个软件包，有 0 个软件包未被升级。
+需要下载 37.6 MB 的归档。
+解压缩后会消耗 113 MB 的额外空间。

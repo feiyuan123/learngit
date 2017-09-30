@@ -1,0 +1,3 @@
+/home/zhangfeifei/huaweitext/1/answer_demo/build/CMakeFiles/edit_cache.dir
+/home/zhangfeifei/huaweitext/1/answer_demo/build/CMakeFiles/rebuild_cache.dir
+/home/zhangfeifei/huaweitext/1/answer_demo/build/CMakeFiles/cdn.dir
